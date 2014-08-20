@@ -10,10 +10,4 @@ transformers:
 - polymer:
     entry_points:
     - web/begin/index.html
-    - web/step2/index.html
-    - web/step3/index.html
-    - web/step4/index.html
-    - web/step5/index.html
-    - web/step6/index.html
-    - web/step7/index.html
     - web/end/index.html
