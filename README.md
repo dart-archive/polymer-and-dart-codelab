@@ -1,4 +1,4 @@
-This example is used by the Dart code lab and walks you through
-learning how to use the Polymer Dart libaries.
+This example is used by the Polymer Dart code lab, which walks you through
+using the polymer.dart package.
 
-For more information, visit http://dartlang.org/codelabs/polymer/
+The code lab lives at: http://dartlang.org/codelabs/polymer/
