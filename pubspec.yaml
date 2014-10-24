@@ -3,7 +3,7 @@ description: Sample app built with the polymer.dart package
 environment:
   sdk: '>=1.2.0 <2.0.0'
 dependencies:
-  polymer: '>=0.12.0 <0.13.0'
+  polymer: '>=0.15.1 <0.16.0'
 dev_dependencies:
   unittest: '>=0.10.0 <0.11.0'
 transformers:
