@@ -2,9 +2,7 @@ library polymer_and_dart.web.models;
 
 import 'package:polymer/polymer.dart';
 
-/**
- * The barebones model for a codelab. Defines constants used for validation.
- */
+/// The barebones model for a codelab. Defines constants used for validation.
 class Codelab extends Observable {
   static const List<String> LEVELS = const ['easy', 'intermediate', 'advanced'];
   static const MIN_TITLE_LENGTH = 10;

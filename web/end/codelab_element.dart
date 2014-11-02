@@ -10,11 +10,9 @@ class CodelabElement extends PolymerElement {
 
   CodelabElement.created(): super.created() {}
 
-  /**
-   * Updates codelab. If the codelab's level has changed, dispatches a
-   * custom event. This allows the element's parent to register a listener to
-   * update the filtered codelabs list.
-   */
+  /// Updates codelab. If the codelab's level has changed, dispatches a
+  /// custom event. This allows the element's parent to register a listener to
+  /// update the filtered codelabs list.
   void updateCodelab(Event e, var detail, Node sender) {
     e.preventDefault();
     if (_cachedCodelab.level != codelab.level) {
@@ -23,18 +21,14 @@ class CodelabElement extends PolymerElement {
     editing = false;
   }
 
-  /**
-   * Cancels editing, restoring the original codelab values.
-   */
+  /// Cancels editing, restoring the original codelab values.
   void cancelEditing(Event e, var detail, Node sender) {
     e.preventDefault();
     copyCodelab(codelab, _cachedCodelab);
     editing = false;
   }
 
-  /**
-   * Starts editing, caching the codelab values.
-   */
+  /// Starts editing, caching the codelab values.
   void startEditing(Event e, var detail, Node sender) {
     e.preventDefault();
     _cachedCodelab = new Codelab();
@@ -42,18 +36,14 @@ class CodelabElement extends PolymerElement {
     editing = true;
   }
 
-  /**
-   * Dispatches a custom event requesting the codelab be deleted.
-   */
+  /// Dispatches a custom event requesting the codelab be deleted.
   void deleteCodelab(Event e, var detail, Node sender) {
     e.preventDefault();
     dispatchEvent(new CustomEvent('deletecodelab',
         detail: {'codelab': codelab}));
   }
 
-  /**
-   * Copies values from source codelab to destination codelab.
-   */
+  /// Copies values from source codelab to destination codelab.
   void copyCodelab(source, destination) {
     source.title = destination.title;
     source.description = destination.description;
