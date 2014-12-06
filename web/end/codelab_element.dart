@@ -24,7 +24,7 @@ class CodelabElement extends PolymerElement {
   /// Cancels editing, restoring the original codelab values.
   void cancelEditing(Event e, var detail, Node sender) {
     e.preventDefault();
-    copyCodelab(codelab, _cachedCodelab);
+    copyCodelab(_cachedCodelab, codelab);
     editing = false;
   }
 
@@ -32,7 +32,7 @@ class CodelabElement extends PolymerElement {
   void startEditing(Event e, var detail, Node sender) {
     e.preventDefault();
     _cachedCodelab = new Codelab();
-    copyCodelab(_cachedCodelab, codelab);
+    copyCodelab(codelab, _cachedCodelab);
     editing = true;
   }
 
