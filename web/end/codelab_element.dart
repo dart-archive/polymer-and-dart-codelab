@@ -10,12 +10,10 @@ class CodelabElement extends PolymerElement {
 
   CodelabElement.created(): super.created() {}
 
-  /*
-   * Updates codelab. If the codelab's level has changed, dispatches a
-   * custom event. This allows the element's parent to register a listener to
-   * update the filtered codelabs list.
-   */
-  updateCodelab(Event e, var detail, Node sender) {
+  /// Updates codelab. If the codelab's level has changed, dispatches a
+  /// custom event. This allows the element's parent to register a listener to
+  /// update the filtered codelabs list.
+  void updateCodelab(Event e, var detail, Node sender) {
     e.preventDefault();
     if (_cachedCodelab.level != codelab.level) {
       dispatchEvent(new CustomEvent('levelchanged'));
@@ -23,38 +21,30 @@ class CodelabElement extends PolymerElement {
     editing = false;
   }
 
-  /*
-   * Cancels editing, restoring the original codelab values.
-   */
-  cancelEditing(Event e, var detail, Node sender) {
+  /// Cancels editing, restoring the original codelab values.
+  void cancelEditing(Event e, var detail, Node sender) {
     e.preventDefault();
     copyCodelab(codelab, _cachedCodelab);
     editing = false;
   }
 
-  /*
-   * Starts editing, caching the codelab values.
-   */
-  startEditing(Event e, var detail, Node sender) {
+  /// Starts editing, caching the codelab values.
+  void startEditing(Event e, var detail, Node sender) {
     e.preventDefault();
     _cachedCodelab = new Codelab();
     copyCodelab(_cachedCodelab, codelab);
     editing = true;
   }
 
-  /*
-   * Dispatches a custom event requesting the codelab be deleted.
-   */
-  deleteCodelab(Event e, var detail, Node sender) {
+  /// Dispatches a custom event requesting the codelab be deleted.
+  void deleteCodelab(Event e, var detail, Node sender) {
     e.preventDefault();
     dispatchEvent(new CustomEvent('deletecodelab',
         detail: {'codelab': codelab}));
   }
 
-  /*
-   * Copies values from source codelab to destination codelab.
-   */
-  copyCodelab(source, destination) {
+  /// Copies values from source codelab to destination codelab.
+  void copyCodelab(source, destination) {
     source.title = destination.title;
     source.description = destination.description;
     source.level = destination.level;
