@@ -8,7 +8,7 @@ class CodelabElement extends PolymerElement {
   @observable bool editing = false;
   Codelab _cachedCodelab;
 
-  CodelabElement.created(): super.created() {}
+  CodelabElement.created() : super.created() {}
 
   /// Updates codelab. If the codelab's level has changed, dispatches a
   /// custom event. This allows the element's parent to register a listener to
