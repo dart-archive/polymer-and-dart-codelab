@@ -13,7 +13,7 @@ class CodelabFormElement extends PolymerElement {
 
   /// Getters that make Codelab static values accessible in the template.
   List<String> get allLevels => Codelab.LEVELS;
-  int get minTitleLength =>  Codelab.MIN_TITLE_LENGTH;
+  int get minTitleLength => Codelab.MIN_TITLE_LENGTH;
   int get maxTitleLength => Codelab.MAX_TITLE_LENGTH;
   int get maxDescriptionLength => Codelab.MAX_DESCRIPTION_LENGTH;
 
