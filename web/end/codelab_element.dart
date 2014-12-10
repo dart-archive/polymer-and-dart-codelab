@@ -45,8 +45,8 @@ class CodelabElement extends PolymerElement {
 
   /// Copies values from source codelab to destination codelab.
   void copyCodelab(source, destination) {
-    source.title = destination.title;
-    source.description = destination.description;
-    source.level = destination.level;
+    destination.title = source.title;
+    destination.description = source.description;
+    destination.level = source.level;
   }
 }
