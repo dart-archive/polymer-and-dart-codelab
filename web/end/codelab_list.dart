@@ -1,16 +1,12 @@
 import 'package:polymer/polymer.dart';
 import 'model.dart' show Codelab;
+import 'item_list.dart' show ItemList;
 import 'dart:html' show Event, Node;
 
 /// Class to represent a collection of Codelab objects.
 @CustomTag('codelab-list')
-class CodelabList extends PolymerElement {
+class CodelabList extends ItemList {
   static const ALL = "all";
-  /// Field for a new Codelab object.
-  @observable Codelab newCodelab = new Codelab();
-
-  /// Collection of codelabs. The source of truth for all codelabs in this app.
-  @observable List<Codelab> codelabs = toObservable([]);
 
   /// Sets the new codelab form to default to the intermediate level.
   String get defaultLevel => Codelab.LEVELS[1];
@@ -23,48 +19,47 @@ class CodelabList extends PolymerElement {
   @observable String filterValue = ALL;
 
   /// The list of filtered codelabs.
-  @observable List<Codelab> filteredCodelabs = toObservable([]);
+  @observable List<Codelab> filteredItems = toObservable([]);
 
   /// Named constructor. Sets initial value of filtered codelabs and sets
   /// the new codelab's level to the default.
   CodelabList.created() : super.created() {
-    filteredCodelabs = codelabs;
-    newCodelab.level = defaultLevel;
+    filteredItems = items;
+    newItem = new Codelab();
+    newItem.level = defaultLevel;
   }
 
   /// Replaces the existing new Codelab, causing the new codelab form to reset.
   void resetForm() {
-    newCodelab = new Codelab();
-    newCodelab.level = defaultLevel;
+    newItem = new Codelab();
+    newItem.level = defaultLevel;
+    super.resetForm();
   }
 
   /// Adds a codelab to the codelabs list and resets the new codelab form. This
   /// triggers codelabsChanged().
-  void addCodelab(Event e, var detail, Node sender) {
-    e.preventDefault();
-    codelabs.add(detail['codelab']);
-    resetForm();
+  void addItem(Event e, var detail, Node sender) {
+    super.addItem(e, detail, sender);
   }
 
   /// Removes a codelab from the codelabs list. This triggers codelabsChanged().
-  void deleteCodelab(Event e, var detail, Node sender) {
-    var codelab = detail['codelab'];
-    codelabs.remove(codelab);
+  void deleteItem(Event e, var detail, Node sender) {
+    super.deleteItem(e, detail, sender);
   }
 
   /// Calculates the codelabs to display when using a filter.
   void filter() {
     if (filterValue == ALL) {
-      filteredCodelabs = codelabs;
+      filteredItems = items;
       return;
     }
-    filteredCodelabs = codelabs.where((codelab) {
-      return codelab.level == filterValue;
+    filteredItems = items.where((item) {
+      return item.level == filterValue;
     }).toList();
   }
 
   /// Refreshes the filtered codelabs list every time the codelabs list changes.
-  void codelabsChanged() {
+  void itemsChanged() {
     filter();
   }
 }
