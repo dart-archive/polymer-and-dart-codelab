@@ -10,13 +10,11 @@ class ItemElement extends PolymerElement {
 
   ItemElement.created() : super.created() {}
 
-	/// Make private variable accessible by subclasses
-	Item get cachedItem => _cachedItem;
-	set cachedItem(item) => _cachedItem = item;
+  /// Make private variable accessible by subclasses
+  Item get cachedItem => _cachedItem;
+  set cachedItem(item) => _cachedItem = item;
 
-  /// Updates codelab. If the codelab's level has changed, dispatches a
-  /// custom event. This allows the element's parent to register a listener to
-  /// update the filtered codelabs list.
+  /// Updates item.
   void updateItem(Event e, var detail, Node sender) {
     e.preventDefault();
     editing = false;
@@ -45,7 +43,7 @@ class ItemElement extends PolymerElement {
 
   /// Copies values from source codelab to destination codelab.
   void copyItem(source, destination) {
-      destination.title = source.title;
-      destination.description = source.description;
+    destination.title = source.title;
+    destination.description = source.description;
   }
 }

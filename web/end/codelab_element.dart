@@ -23,22 +23,22 @@ class CodelabElement extends ItemElement {
 
   /// Cancels editing, restoring the original codelab values.
   void cancelEditing(Event e, var detail, Node sender) {
-		super.cancelEditing(e, detail, sender);
+    super.cancelEditing(e, detail, sender);
   }
 
   /// Starts editing, caching the codelab values.
   void startEditing(Event e, var detail, Node sender) {
     cachedItem = new Codelab();
-		super.startEditing(e, detail, sender);
+      super.startEditing(e, detail, sender);
   }
 
   /// Dispatches a custom event requesting the codelab be deleted.
   void deleteItem(Event e, var detail, Node sender) {
-		super.deleteItem(e, detail, sender);
+    super.deleteItem(e, detail, sender);
   }
 
   /// Copies values from source codelab to destination codelab.
   void copyItem(source, destination) {
-		super.copyItem(source, destination);
+    super.copyItem(source, destination);
   }
 }
