@@ -1,0 +1,36 @@
+To do:
+  - Refactor Item so as to use the mirrors package.
+  - Refactor client code to instantiate only Item, getting the subclass from the context. This means that only attrs and operations specific to subclasses need be coded in them.
+  - Move comments from Codelab* classes into respective Item* classes.
+
+  Implement Item factory
+    item.dart
+      import Dart mirrors
+      add new Item class
+      add factory ctor to it
+      rename Item class to ItemBase
+      poss make title, descr private and add get/setters
+    model.dart
+      Codelab extends ItemBase
+      add params to Codelab()
+    codelab_element.dart
+      add itemType
+      add params to CodelabElement ctor, pass to superclass ctor
+      add params to updateItem()
+        There are already params (event, detail, node)!
+    item_element.dart
+      add itemType
+        error: must be initialized
+        hmm. should this be an abstract class?
+      add args to updateItem()
+      set instance attrs in updateItem()
+      pass type into Item() calls
+      add params to updateItem()
+    codelab_list.dart
+      remove Codelab instantiations from
+        ctor
+        resetForm()
+    item_list.dart
+      add body to ItemList ctor
+      add type to ItemList()
+      pass params to Item() calls
