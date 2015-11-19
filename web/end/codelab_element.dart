@@ -6,7 +6,10 @@ import 'item_element.dart' show ItemElement;
 @CustomTag('codelab-element')
 class CodelabElement extends ItemElement {
 
-  CodelabElement.created() : super.created() {}
+  final itemType = "Codelab";
+
+  CodelabElement(title, description) : super(title, description);
+  CodelabElement.created() : super.created();
 
   /// Getters that make Codelab static values accessible in the template.
   List<String> get allLevels => Codelab.LEVELS;

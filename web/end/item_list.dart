@@ -15,9 +15,14 @@ class ItemList extends PolymerElement {
   /// the new codelab's level to the default.
   ItemList.created() : super.created();
 
+  ItemList(itemType) {
+    newItem = new Item(itemType, '', '');
+  }
+
   /// Replaces the existing new Codelab, causing the new codelab form to reset.
   void resetForm() {
     print("ItemList::resetForm()");
+    newItem = new Item(itemType, '', '');
   }
 
   /// Adds a codelab to the codelabs list and resets the new codelab form. This

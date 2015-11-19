@@ -25,13 +25,11 @@ class CodelabList extends ItemList {
   /// the new codelab's level to the default.
   CodelabList.created() : super.created() {
     filteredItems = items;
-    newItem = new Codelab();
     newItem.level = defaultLevel;
   }
 
   /// Replaces the existing new Codelab, causing the new codelab form to reset.
   void resetForm() {
-    newItem = new Codelab();
     newItem.level = defaultLevel;
     super.resetForm();
   }

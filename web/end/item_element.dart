@@ -7,8 +7,15 @@ class ItemElement extends PolymerElement {
   @published Item item;
   @observable bool editing = false;
   Item _cachedItem;
+  final String itemType;
 
-  ItemElement.created() : super.created() {}
+  ItemElement(title, description) {
+    item = new Item(itemType, title, description);
+  }
+
+  ItemElement.created() : super.created() {
+    item = new Item(itemType, title, description);
+  };
 
   /// Make private variable accessible by subclasses
   Item get cachedItem => _cachedItem;
@@ -30,6 +37,7 @@ class ItemElement extends PolymerElement {
   /// Starts editing, caching the codelab values.
   void startEditing(Event e, var detail, Node sender) {
     e.preventDefault();
+    _cachedItem = new Item(itemType, '', '');
     copyItem(item, _cachedItem);
     editing = true;
   }
