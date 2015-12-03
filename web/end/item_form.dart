@@ -61,7 +61,7 @@ class ItemFormElement extends PolymerElement {
   }
 
   /// Dispatches a custom event when a form is no longer needed. It is up to the
-  /// form's parent elemnt to listen for the dispatch and handle a form that
+  /// form's parent element to listen for the dispatch and handle a form that
   /// isn't being used.
   void cancelForm(Event event, Object detail, Node sender) {
     event.preventDefault();

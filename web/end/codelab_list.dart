@@ -6,6 +6,8 @@ import 'dart:html' show Event, Node;
 /// Class to represent a collection of Codelab objects.
 @CustomTag('codelab-list')
 class CodelabList extends ItemList {
+  final itemType = 'Codelab';
+
   static const ALL = "all";
 
   /// Sets the new codelab form to default to the intermediate level.
@@ -46,6 +48,7 @@ class CodelabList extends ItemList {
   }
 
   /// Calculates the codelabs to display when using a filter.
+  /// Todo: move to base class
   void filter() {
     if (filterValue == ALL) {
       filteredItems = items;
@@ -57,6 +60,7 @@ class CodelabList extends ItemList {
   }
 
   /// Refreshes the filtered codelabs list every time the codelabs list changes.
+  /// Todo: move to base class
   void itemsChanged() {
     filter();
   }

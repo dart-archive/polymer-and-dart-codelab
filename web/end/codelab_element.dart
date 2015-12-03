@@ -32,7 +32,7 @@ class CodelabElement extends ItemElement {
   /// Starts editing, caching the codelab values.
   //TODO: move ctor call into base class
   void startEditing(Event e, var detail, Node sender) {
-    cachedItem = new Codelab();
+//    cachedItem = new Codelab();
     super.startEditing(e, detail, sender);
   }
 

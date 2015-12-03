@@ -9,13 +9,9 @@ class ItemElement extends PolymerElement {
   Item _cachedItem;
   final String itemType;
 
-  ItemElement(title, description) {
-    item = new Item(itemType, title, description);
-  }
-
   ItemElement.created() : super.created() {
-    item = new Item(itemType, title, description);
-  };
+    item = new Item(itemType, '', '');
+  }
 
   /// Make private variable accessible by subclasses
   Item get cachedItem => _cachedItem;
@@ -53,5 +49,6 @@ class ItemElement extends PolymerElement {
   void copyItem(source, destination) {
     destination.title = source.title;
     destination.description = source.description;
+    destination.level = source.level;
   }
 }
