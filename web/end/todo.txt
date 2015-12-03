@@ -3,7 +3,7 @@ To do:
   - Refactor client code to instantiate only Item, getting the subclass from the context. This means that only attrs and operations specific to subclasses need be coded in them.
   - Move comments from Codelab* classes into respective Item* classes.
 
-  Implement Item factory
+-  Implement Item factory
     item.dart
       import Dart mirrors
       add new Item class
@@ -34,3 +34,5 @@ To do:
       add body to ItemList ctor
       add type to ItemList()
       pass params to Item() calls
+
+Fix item level binding in item_form

@@ -28,15 +28,7 @@ class Item extends Observable {
     MirrorSystem libs = currentMirrorSystem();
     LibraryMirror lib = libs.findLibrary(new Symbol('polymer_and_dart.web.models'));
     Map<Symbol, Mirror> classes = lib.declarations;
-    // To do: handle exception if class not found
     ClassMirror cls = classes[new Symbol(type)];
-    // TODO:
-    //  verify each subclass has no-arg ctor
-    //  determ how to pass args to ctor.
-
-    // returns "No constructor 'Codelab.' with matching arguments declared in class 'Codelab'."
-//    InstanceMirror inst = cls.newInstance(new Symbol(''), [{'title': '', 'description': ''}]);
-//    InstanceMirror inst = cls.newInstance(new Symbol('foo'), ['fooarg1', 'fooarg2']);
     InstanceMirror inst = cls.newInstance(new Symbol(''), [title, description]);
     return inst.reflectee;
   }

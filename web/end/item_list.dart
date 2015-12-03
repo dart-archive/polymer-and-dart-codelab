@@ -8,7 +8,7 @@ class ItemList extends PolymerElement {
   /// Field for a new Codelab object.
   @observable Item newItem;
 
-  final String ItemType;
+  final String itemType;
 
   /// Collection of codelabs. The source of truth for all codelabs in this app.
   @observable List<Item> items = toObservable([]);
@@ -16,13 +16,14 @@ class ItemList extends PolymerElement {
   /// Named constructor. Sets initial value of filtered codelabs and sets
   /// the new codelab's level to the default.
   ItemList.created() : super.created() {
+    print("ItemList::created()");
     newItem = new Item(itemType, '', '');
   }
 
   /// Replaces the existing new Codelab, causing the new codelab form to reset.
   void resetForm() {
     print("ItemList::resetForm()");
-    newItem = new Item('Codelab', '', '');
+    newItem = new Item(itemType, '', '');
   }
 
   /// Adds a codelab to the codelabs list and resets the new codelab form. This

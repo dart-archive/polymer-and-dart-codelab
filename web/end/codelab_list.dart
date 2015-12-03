@@ -32,8 +32,8 @@ class CodelabList extends ItemList {
 
   /// Replaces the existing new Codelab, causing the new codelab form to reset.
   void resetForm() {
-    newItem.level = defaultLevel;
     super.resetForm();
+    newItem.level = defaultLevel;
   }
 
   /// Adds a codelab to the codelabs list and resets the new codelab form. This
@@ -48,7 +48,7 @@ class CodelabList extends ItemList {
   }
 
   /// Calculates the codelabs to display when using a filter.
-  /// Todo: move to base class
+  /// Todo: consider moving to base class
   void filter() {
     if (filterValue == ALL) {
       filteredItems = items;
@@ -60,7 +60,7 @@ class CodelabList extends ItemList {
   }
 
   /// Refreshes the filtered codelabs list every time the codelabs list changes.
-  /// Todo: move to base class
+  /// Todo: consider moving to base class
   void itemsChanged() {
     filter();
   }
