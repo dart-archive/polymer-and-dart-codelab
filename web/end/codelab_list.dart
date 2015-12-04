@@ -48,7 +48,7 @@ class CodelabList extends ItemList {
   }
 
   /// Calculates the codelabs to display when using a filter.
-  /// Todo: consider moving to base class
+  /// TODO: consider moving to base class
   void filter() {
     if (filterValue == ALL) {
       filteredItems = items;
@@ -60,7 +60,7 @@ class CodelabList extends ItemList {
   }
 
   /// Refreshes the filtered codelabs list every time the codelabs list changes.
-  /// Todo: consider moving to base class
+  /// TODO: consider moving to base class
   void itemsChanged() {
     filter();
   }

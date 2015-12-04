@@ -8,7 +8,6 @@ class CodelabElement extends ItemElement {
 
   final itemType = "Codelab";
 
-  CodelabElement(title, description) : super(title, description);
   CodelabElement.created() : super.created();
 
   /// Getters that make Codelab static values accessible in the template.
@@ -42,5 +41,6 @@ class CodelabElement extends ItemElement {
   /// Copies values from source codelab to destination codelab.
   void copyItem(source, destination) {
     super.copyItem(source, destination);
+    destination.level = source.level;
   }
 }

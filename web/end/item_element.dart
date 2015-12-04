@@ -10,7 +10,7 @@ class ItemElement extends PolymerElement {
   final String itemType;
 
   ItemElement.created() : super.created() {
-    item = new Item(itemType, '', '');
+    _cachedItem = new Item(itemType, '', '');
   }
 
   /// Make private variable accessible by subclasses
@@ -33,7 +33,6 @@ class ItemElement extends PolymerElement {
   /// Starts editing, caching the codelab values.
   void startEditing(Event e, var detail, Node sender) {
     e.preventDefault();
-    _cachedItem = new Item(itemType, '', '');
     copyItem(item, _cachedItem);
     editing = true;
   }
@@ -49,6 +48,5 @@ class ItemElement extends PolymerElement {
   void copyItem(source, destination) {
     destination.title = source.title;
     destination.description = source.description;
-    destination.level = source.level;
   }
 }
