@@ -1,17 +1,18 @@
 <link rel="import" href="packages/polymer/polymer.html">
 <link rel="import" href="item_form.html">
 
-<polymer-element name="codelab-form" extends="item-form">
+<polymer-element name="codelab-form" attributes="item">
   <template>
-      <shadow></shadow>
-      <div class="field">
-        <label>Level: </label>
-        <select value="{{item.level}}">
-          <option template repeat="{{level in allLevels}}">
-            {{level}}
-          </option>
-        </select>
-      </div>
+  <item-form item="{{item}}">
+    <div class="field">
+      <label>Level: </label>
+      <select value="{{item.level}}">
+        <option template repeat="{{level in allLevels}}">
+          {{level}}
+        </option>
+      </select>
+    </div>
+  </item-form>
   </template>
   <script type="application/dart" src="codelab_form.dart"></script>
 </polymer-element>

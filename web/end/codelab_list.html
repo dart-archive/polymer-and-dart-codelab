@@ -4,10 +4,10 @@
 <link rel="import" href="codelab_element.html">
 <link rel="import" href="item_list.html">
 
-<polymer-element name="codelab-list" extends="item-list">
+<polymer-element name="codelab-list">
   <template>
-		<shadow></shadow>
 		<!-- TODO: consider moving to base class. -->
+    <!--item-list></item-list-->
     <div>
       <label>Filter: </label>
       <select value="{{filterValue}}" on-change="{{filter}}">
