@@ -1,19 +1,18 @@
 import 'package:polymer/polymer.dart';
 import 'item.dart' show Item;
 import 'dart:html' show CustomEvent, Event, Node;
-import 'codelab_form.dart';
 
 /*
- * The class for creating or updating a codelab. Performs validation based on
- * a codelab based on validation rules defined in the model.
+ * The class for creating or updating a item. Performs validation on
+ * an item based on validation rules defined in the model.
  */
 
 @CustomTag('item-form')
 class ItemFormElement extends PolymerElement {
-  /// The Codelab object modified by this form.
+  /// The Item object modified by this form.
   @published Item item;
 
-  /// Getters that make Codelab static values accessible in the template.
+  /// Getters that make Item static values accessible in the template.
   int get minTitleLength => Item.MIN_TITLE_LENGTH;
   int get maxTitleLength => Item.MAX_TITLE_LENGTH;
   int get maxDescriptionLength => Item.MAX_DESCRIPTION_LENGTH;
@@ -24,14 +23,14 @@ class ItemFormElement extends PolymerElement {
 
   ItemFormElement.created() : super.created() {}
 
-  /// Dispatches submit up to subclass
+  /// Dispatches submit to parent
   void submit(Event event, Object detail, Node sender) {
     event.preventDefault();
     dispatchEvent(new CustomEvent('submit',
         detail: {'item': item}));
   }
 
-  /// Dispatches submit up to subclass
+  /// Dispatches submit to parent
   /// Todo: Need to include item in event?
   void cancel(Event event, Object detail, Node sender) {
     event.preventDefault();
@@ -39,7 +38,7 @@ class ItemFormElement extends PolymerElement {
         detail: {'item': item}));
   }
 
-  /// Validates the codelab title. If title is not valid, sets error message and
+  /// Validates the item title. If title is not valid, sets error message and
   /// returns false. Otherwise, removes error message and returns true.
   bool validateTitle() {
     if (item.title.length < minTitleLength ||
@@ -52,7 +51,7 @@ class ItemFormElement extends PolymerElement {
     return true;
   }
 
-  /// Validates the codelab description. If description is not valid, sets error
+  /// Validates the item description. If description is not valid, sets error
   /// message and returns false. Otherwise, removes error message and returns
   /// true.
   bool validateDescription() {
@@ -65,9 +64,9 @@ class ItemFormElement extends PolymerElement {
     return true;
   }
 
-  /// Dispatches a custom event if a codelab passes validation. Otherwise, sets
+  /// Dispatches a custom event if an item passes validation. Otherwise, sets
   /// the form error message. It is up to the form's parent element to listen
-  /// for the dispatch and handle the validated codelab object.
+  /// for the dispatch and handle the validated item.
   void validateItem(Event event, Object detail, Node sender) {
     event.preventDefault();
     if (validateTitle() && validateDescription()) {

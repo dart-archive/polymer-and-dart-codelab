@@ -1,5 +1,3 @@
-//library polymer_and_dart.web.models;
-
 import 'package:polymer/polymer.dart';
 import 'dart:mirrors';
 

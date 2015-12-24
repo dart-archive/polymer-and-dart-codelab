@@ -30,20 +30,19 @@ class CodelabList extends ItemList {
     newItem.level = defaultLevel;
   }
 
-  /// Replaces the existing new Codelab, causing the new codelab form to reset.
   void resetForm() {
-    super.resetForm();
+    /// Insert needed initializations here
     newItem.level = defaultLevel;
+    super.resetForm();
   }
 
-  /// Adds a codelab to the codelabs list and resets the new codelab form. This
-  /// triggers codelabsChanged().
   void addItem(Event e, var detail, Node sender) {
+    /// Insert needed initializations here
     super.addItem(e, detail, sender);
   }
 
-  /// Removes a codelab from the codelabs list. This triggers codelabsChanged().
   void deleteItem(Event e, var detail, Node sender) {
+    /// Insert needed teardown here
     super.deleteItem(e, detail, sender);
   }
 

@@ -15,32 +15,18 @@ class CodelabFormElement extends ItemFormElement {
 
   CodelabFormElement.created() : super.created() {}
 
-  /// Validates the codelab title. If title is not valid, sets error message and
-  /// returns false. Otherwise, removes error message and returns true.
-  /// Todo: remove. Needed only by ItemForm
-  bool validateTitle() {
-    return super.validateTitle();
-  }
-
-  /// Validates the codelab description. If description is not valid, sets error
-  /// message and returns false. Otherwise, removes error message and returns
-  /// true.
-  /// Todo: remove. Needed only by ItemForm
-  bool validateDescription() {
-    return super.validateDescription();
-  }
-
-  /// Dispatches a custom event if a codelab passes validation. Otherwise, sets
-  /// the form error message. It is up to the form's parent element to listen
-  /// for the dispatch and handle the validated codelab object.
   void validateItem(Event event, Object detail, Node sender) {
-    super.validateItem(event, detail, sender);
+    /// Superclass validation dispatches custom 'itemvalidated' event
+    /// for which the parent (...-list) class registers a listener.
+    /// Perform any needed Item subclass validations here, first.
+    if (true)  /// E.g.: item.level == "easy"
+      super.validateItem(event, detail, sender);
   }
 
-  /// Dispatches a custom event when a form is no longer needed. It is up to the
-  /// form's parent elemnt to listen for the dispatch and handle a form that
-  /// isn't being used.
   void cancelForm(Event event, Object detail, Node sender) {
+    /// Superclass clears title and description, dispatches
+    /// custom 'formnotneeded' event for parent. Perform any
+    /// other needed operations here.
     super.cancelForm(event, detail, sender);
   }
 }
