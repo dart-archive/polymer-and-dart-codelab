@@ -52,11 +52,12 @@ class CodelabList extends ItemList {
   void filter() {
     if (filterValue == ALL) {
       filteredItems = items;
-      return;
     }
-    filteredItems = items.where((item) {
-      return item.level == filterValue;
-    }).toList();
+    else {
+      filteredItems = items.where((item) {
+        return item.level == filterValue;
+      }).toList();
+    }
   }
 
   /// Refreshes the filtered codelabs list every time the codelabs list changes.

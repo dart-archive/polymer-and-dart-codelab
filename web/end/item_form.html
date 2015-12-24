@@ -72,7 +72,7 @@
       }
     </style>
 
-    <form on-submit="{{validateItem}}">
+    <form>
       <div class="field">
         <textarea placeholder="Add title" value="{{item.title}}"
             on-keyup="{{validateTitle}}">
@@ -89,7 +89,7 @@
             on-keyup="{{validateDescription}}">
         </textarea>
         <div>
-          <!--span class="chars-left">{{maxDescriptionLength - item.description.length}}</span-->
+          <span class="chars-left">{{maxDescriptionLength - item.description.length}}</span>
           <span class="error" hidden?="{{descriptionErrorMessage.isEmpty}}">
             {{descriptionErrorMessage}}
           </span>
@@ -97,8 +97,8 @@
       </div>
         <content></content>
       <div>
-        <button type="submit">Submit</button>
-        <button type="button" on-click="{{cancelForm}}">Cancel</button>
+        <button on-click="{{submit}}">Submit</button>
+        <button on-click="{{cancel}}">Cancel</button>
       </div>
     </form>
   </template>

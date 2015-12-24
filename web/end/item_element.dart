@@ -17,6 +17,18 @@ class ItemElement extends PolymerElement {
   Item get cachedItem => _cachedItem;
   set cachedItem(item) => _cachedItem = item;
 
+  /// Fire event up to subclass element
+  void edit(Event e, var detail, Node sender) {
+    dispatchEvent(new CustomEvent('startedit',
+        detail: {'item': item}));
+  }
+
+  /// Fire event up to subclass element
+  void delete(Event e, var detail, Node sender) {
+    dispatchEvent(new CustomEvent('delete',
+        detail: {'item': item}));
+  }
+
   /// Updates item.
   void updateItem(Event e, var detail, Node sender) {
     e.preventDefault();

@@ -17,6 +17,7 @@ class CodelabFormElement extends ItemFormElement {
 
   /// Validates the codelab title. If title is not valid, sets error message and
   /// returns false. Otherwise, removes error message and returns true.
+  /// Todo: remove. Needed only by ItemForm
   bool validateTitle() {
     return super.validateTitle();
   }
@@ -24,6 +25,7 @@ class CodelabFormElement extends ItemFormElement {
   /// Validates the codelab description. If description is not valid, sets error
   /// message and returns false. Otherwise, removes error message and returns
   /// true.
+  /// Todo: remove. Needed only by ItemForm
   bool validateDescription() {
     return super.validateDescription();
   }

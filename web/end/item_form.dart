@@ -1,6 +1,7 @@
 import 'package:polymer/polymer.dart';
 import 'item.dart' show Item;
 import 'dart:html' show CustomEvent, Event, Node;
+import 'codelab_form.dart';
 
 /*
  * The class for creating or updating a codelab. Performs validation based on
@@ -22,6 +23,21 @@ class ItemFormElement extends PolymerElement {
   @observable String descriptionErrorMessage = '';
 
   ItemFormElement.created() : super.created() {}
+
+  /// Dispatches submit up to subclass
+  void submit(Event event, Object detail, Node sender) {
+    event.preventDefault();
+    dispatchEvent(new CustomEvent('submit',
+        detail: {'item': item}));
+  }
+
+  /// Dispatches submit up to subclass
+  /// Todo: Need to include item in event?
+  void cancel(Event event, Object detail, Node sender) {
+    event.preventDefault();
+    dispatchEvent(new CustomEvent('cancel',
+        detail: {'item': item}));
+  }
 
   /// Validates the codelab title. If title is not valid, sets error message and
   /// returns false. Otherwise, removes error message and returns true.

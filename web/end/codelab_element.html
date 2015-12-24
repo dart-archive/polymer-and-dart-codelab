@@ -1,30 +1,27 @@
 <link rel="import" href="packages/polymer/polymer.html">
 <link rel="import" href="item_element.html">
+<link rel="import" href="codelab_form.html">
 
-<polymer-element name="codelab-element" attributes="editing" extends="item-element">
+<polymer-element name="codelab-element" attributes="item editing">
   <template>
-    <shadow></shadow>
-    <div>
     <template if="{{!editing}}">
-      <div class="item">
-        <div class="field">
-          <p><span>Level: </span>{{item.level}}</p>
-        </div>
-      </div>
-      </template>
-      <template if="{{editing}}">
-        <div class="item">
-          <div class="field">
-            <label>Level: </label>
-            <select value="{{item.level}}">
-              <option template repeat="{{level in allLevels}}">
-                {{level}}
-              </option>
-            </select>
+      <div on-startedit="{{startEditing}}"
+           on-delete="{{deleteItem}}">
+        <item-element item="{{item}}">
+          <div class="item">
+            <div class="field">
+              <p><span>Level: </span>{{item.level}}</p>
+            </div>
           </div>
-        </div>
-      </template>
-    </div>
+        </item-element>
+      </div>
+    </template>
+    <template if="{{editing}}">
+      <div on-formNotNeeded="{{cancelEditing}}"
+           on-itemvalidated="{{updateItem}}">
+        <codelab-form item="{{item}}"></codelab-form>
+      </div>
+    </template>
   </template>
   <script type="application/dart" src="codelab_element.dart"></script>
 </polymer-element>
