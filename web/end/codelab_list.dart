@@ -32,8 +32,8 @@ class CodelabList extends ItemList {
 
   void resetForm() {
     /// Insert needed initializations here
-    newItem.level = defaultLevel;
     super.resetForm();
+    newItem.level = defaultLevel;
   }
 
   void addItem(Event e, var detail, Node sender) {

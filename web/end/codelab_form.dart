@@ -18,15 +18,15 @@ class CodelabFormElement extends ItemFormElement {
   void validateItem(Event event, Object detail, Node sender) {
     /// Superclass validation dispatches custom 'itemvalidated' event
     /// for which the parent (...-list) class registers a listener.
-    /// Perform any needed Item subclass validations here, first.
     if (true)  /// E.g.: item.level == "easy"
       super.validateItem(event, detail, sender);
+      /// Perform any needed Item subclass validations here, first.
   }
 
   void cancelForm(Event event, Object detail, Node sender) {
     /// Superclass clears title and description, dispatches
-    /// custom 'formnotneeded' event for parent. Perform any
-    /// other needed operations here.
+    /// custom 'formnotneeded' event for parent.
+    /// Perform any needed subclass operations here.
     super.cancelForm(event, detail, sender);
   }
 }
