@@ -21,6 +21,11 @@ class ItemFormElement extends PolymerElement {
   @observable String titleErrorMessage = '';
   @observable String descriptionErrorMessage = '';
 
+  /// Variables used in displaying chars remaining messages.
+  /// Todo: Why error when setting to maxTitleLength?
+  @observable int titleCharsLeft = Item.MIN_TITLE_LENGTH;
+  @observable int descriptionCharsLeft = Item.MAX_DESCRIPTION_LENGTH;
+
   ItemFormElement.created() : super.created() {}
 
   /// Dispatches submit to parent
@@ -41,6 +46,7 @@ class ItemFormElement extends PolymerElement {
   /// Validates the item title. If title is not valid, sets error message and
   /// returns false. Otherwise, removes error message and returns true.
   bool validateTitle() {
+    titleCharsLeft = minTitleLength - item.title.length;
     if (item.title.length < minTitleLength ||
         item.title.length > maxTitleLength) {
       titleErrorMessage = "Title must be between $minTitleLength and "
@@ -55,6 +61,7 @@ class ItemFormElement extends PolymerElement {
   /// message and returns false. Otherwise, removes error message and returns
   /// true.
   bool validateDescription() {
+    descriptionCharsLeft = maxDescriptionLength - item.description.length;
     if (item.description.length > maxDescriptionLength) {
       descriptionErrorMessage = "Description cannot be more than "
           "$maxDescriptionLength characters.";

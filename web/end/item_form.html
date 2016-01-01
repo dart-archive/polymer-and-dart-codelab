@@ -79,7 +79,7 @@
             on-keyup="{{validateTitle}}">
         </textarea>
         <div>
-          <span class="chars-left">{{maxTitleLength - item.title.length}}</span>
+          <span class="chars-left">{{titleCharsLeft}}</span>
           <span class="error" hidden?="{{titleErrorMessage.isEmpty}}">
             {{titleErrorMessage}}
           </span>
@@ -90,7 +90,7 @@
             on-keyup="{{validateDescription}}">
         </textarea>
         <div>
-          <span class="chars-left">{{maxDescriptionLength - item.description.length}}</span>
+          <span class="chars-left">{{descriptionCharsLeft}}</span>
           <span class="error" hidden?="{{descriptionErrorMessage.isEmpty}}">
             {{descriptionErrorMessage}}
           </span>
