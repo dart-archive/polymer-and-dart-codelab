@@ -22,33 +22,23 @@ class ItemFormElement extends PolymerElement {
   @observable String descriptionErrorMessage = '';
 
   /// Variables used in displaying chars remaining messages.
-  @observable int titleCharsLeft = Item.MAX_TITLE_LENGTH;
+  /// Todo: Why error when setting to maxTitleLength?
+  @observable int titleCharsLeft = Item.MIN_TITLE_LENGTH;
   @observable int descriptionCharsLeft = Item.MAX_DESCRIPTION_LENGTH;
 
   ItemFormElement.created() : super.created() {}
 
-  /// Restore form messages to initial state
-  void resetForm() {
-    /// Todo: Why does setting these in validateItem() and cancelForm() not work?
-    titleCharsLeft = maxTitleLength;
-    descriptionCharsLeft = maxDescriptionLength;
-    titleErrorMessage = '';
-    descriptionErrorMessage = '';
-  }
-
   /// Dispatches submit to parent
   void submit(Event event, Object detail, Node sender) {
     event.preventDefault();
-    resetForm();
     dispatchEvent(new CustomEvent('submit',
         detail: {'item': item}));
   }
 
-  /// Dispatches custom event to parent (<codelab-form>)
+  /// Dispatches submit to parent
   /// Todo: Need to include item in event?
   void cancel(Event event, Object detail, Node sender) {
     event.preventDefault();
-    resetForm();
     dispatchEvent(new CustomEvent('cancel',
         detail: {'item': item}));
   }
@@ -56,7 +46,7 @@ class ItemFormElement extends PolymerElement {
   /// Validates the item title. If title is not valid, sets error message and
   /// returns false. Otherwise, removes error message and returns true.
   bool validateTitle() {
-    titleCharsLeft = maxTitleLength - item.title.length;
+    titleCharsLeft = minTitleLength - item.title.length;
     if (item.title.length < minTitleLength ||
         item.title.length > maxTitleLength) {
       titleErrorMessage = "Title must be between $minTitleLength and "
@@ -97,6 +87,8 @@ class ItemFormElement extends PolymerElement {
   /// isn't being used.
   void cancelForm(Event event, Object detail, Node sender) {
     event.preventDefault();
+    titleErrorMessage = '';
+    descriptionErrorMessage = '';
     dispatchEvent(new CustomEvent('formnotneeded'));
   }
 }
