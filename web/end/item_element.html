@@ -1,0 +1,46 @@
+<link rel="import" href="packages/polymer/polymer.html">
+
+<link rel="import" href="item_form.html">
+
+<polymer-element name="item-element" attributes="item">
+  <template>
+    <style>
+      :host {
+        display: block;
+        margin: 0px;
+        margin: 12px 0;
+        background: #fcfcfc;
+        border-radius: 6px;
+      }
+      .item {
+        padding: 10px;
+      }
+      .item .field {
+        margin-bottom: 8px;
+      }
+      .item .field h2 {
+        font-weight: normal;
+        margin: 0px;
+        padding: 0px;
+        font-size: 1.8em;
+      }
+      .small {
+        font-size: .8em;
+      }
+    </style>
+      <div class="item">
+        <div class="field">
+          <h2>{{item.title}}</h2>
+        </div>
+        <div class="field">
+          <p>{{item.description}}</p>
+        </div>
+        <content></content>
+        <div class="field">
+          <span class="small" on-click="{{edit  }}">Edit  </span> |
+          <span class="small" on-click="{{delete}}">Delete</span>
+        </div>
+      </div>
+    </template>
+  <script type="application/dart" src="item_element.dart"></script>
+</polymer-element>

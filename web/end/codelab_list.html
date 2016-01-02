@@ -2,13 +2,19 @@
 
 <link rel="import" href="codelab_form.html">
 <link rel="import" href="codelab_element.html">
+<link rel="import" href="item_list.html">
 
 <polymer-element name="codelab-list">
   <template>
     <style>
+      /* To do: determine why these not coming in from <item-form> template */
+      .field {
+        margin-bottom: 12px;
+      }
       select {
-        margin-bottom: 30px;
-        display: inline;
+        height: 40px;
+        width: 50%;
+        height: 30px;
         padding: 6px 12px;
         font-size: 14px;
         line-height: 1.42857143;
@@ -16,13 +22,16 @@
         background-color: #fff;
         background-image: none;
         border: 1px solid #ccc;
-        border-radius: 2px;
+        border-radius: 4px;
         -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
         box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
         -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
         transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
       }
     </style>
+
+    <!-- TODO: Consider moving to base class. -->
+    <!--item-list></item-list-->
     <div>
       <label>Filter: </label>
       <select value="{{filterValue}}" on-change="{{filter}}">
@@ -31,16 +40,19 @@
         </option>
       </select>
     </div>
-    <div on-codelabvalidated="{{addCodelab}}"
+
+    <div on-itemvalidated="{{addItem}}"
          on-formnotneeded="{{resetForm}}">
-      <codelab-form codelab="{{newCodelab}}"></codelab-form>
+      <codelab-form item="{{newItem}}"></codelab-form>
     </div>
-    <div on-deletecodelab="{{deleteCodelab}}"
+
+    <div on-deleteitem="{{deleteItem}}"
          on-levelchanged="{{filter}}">
-      <template repeat="{{codelab in filteredCodelabs}}">
-        <codelab-element codelab="{{codelab}}"></codelab-element>
+      <template repeat="{{item in filteredItems}}">
+        <codelab-element item="{{item}}"></codelab-element>
       </template>
     </div>
+
   </template>
   <script type="application/dart" src="codelab_list.dart"></script>
 </polymer-element>
